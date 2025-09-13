@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Rocket, ArrowRight } from 'lucide-react';
+import { Rocket, ArrowRight, Twitter } from 'lucide-react';
 
 const Landing = () => {
   return (
@@ -86,7 +86,19 @@ const Landing = () => {
               <img src="/Seifu.png" alt="Seifun Logo" className="w-8 h-8 rounded-full" />
               <span className="text-xl font-bold landing-text-primary">Seifun</span>
             </div>
-            <div className="landing-text-muted text-sm">© 2025 on Sei</div>
+            <div className="flex items-center gap-4">
+              <a
+                href="https://x.com/seifu_trade"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 landing-text-muted hover:landing-text-primary"
+                aria-label="Follow @seifu_trade on X"
+              >
+                <Twitter className="w-4 h-4" />
+                <span className="text-sm">@seifu_trade</span>
+              </a>
+              <div className="landing-text-muted text-sm">© 2025 on Sei</div>
+            </div>
           </div>
         </div>
       </footer>
