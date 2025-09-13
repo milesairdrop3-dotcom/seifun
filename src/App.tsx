@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AppHeaderSafe from './components/AppHeaderSafe';
 import AppFooter from './components/AppFooter';
+import MobileBottomBar from './components/MobileBottomBar';
+import SocialExcel from './pages/SocialExcel';
 import SeifunLaunch from './pages/SeifunLaunch';
 import SeiList from './pages/SeiList';
 import SafeChecker from './pages/SafeChecker';
@@ -23,6 +25,8 @@ function App() {
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
               <SeifunLaunch />
+              <div className="h-20 md:hidden" />
+              <MobileBottomBar />
               <AppFooter />
             </div>
           } />
@@ -30,6 +34,8 @@ function App() {
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
               <SeiList />
+              <div className="h-20 md:hidden" />
+              <MobileBottomBar />
               <AppFooter />
             </div>
           } />
@@ -37,6 +43,8 @@ function App() {
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
               <SafeChecker />
+              <div className="h-20 md:hidden" />
+              <MobileBottomBar />
               <AppFooter />
             </div>
           } />
@@ -44,6 +52,17 @@ function App() {
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
               <Seilor />
+              <div className="h-20 md:hidden" />
+              <MobileBottomBar />
+              <AppFooter />
+            </div>
+          } />
+          <Route path="/app/excel" element={
+            <div className="min-h-screen app-bg-primary">
+              <AppHeaderSafe />
+              <SocialExcel />
+              <div className="h-20 md:hidden" />
+              <MobileBottomBar />
               <AppFooter />
             </div>
           } />
@@ -51,6 +70,8 @@ function App() {
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
               <DevPlus />
+              <div className="h-20 md:hidden" />
+              <MobileBottomBar />
               <AppFooter />
             </div>
           } />
@@ -58,6 +79,8 @@ function App() {
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
               <Docs />
+              <div className="h-20 md:hidden" />
+              <MobileBottomBar />
               <AppFooter />
             </div>
           } />
@@ -65,6 +88,8 @@ function App() {
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
               <RealTimeChart />
+              <div className="h-20 md:hidden" />
+              <MobileBottomBar />
               <AppFooter />
             </div>
           } />
