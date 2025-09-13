@@ -37,7 +37,7 @@ const Landing = () => {
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: 'linear-gradient(rgba(2,6,23,0.6), rgba(2,6,23,0.8)), url(/theme-blue.jpg)',
+              backgroundImage: 'linear-gradient(rgba(2,6,23,0.6), rgba(2,6,23,0.85)), url(/assets/landing-blue.jpg)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               opacity: 0.9,
@@ -47,7 +47,7 @@ const Landing = () => {
           <div
             className="absolute inset-0 mix-blend-screen"
             style={{
-              backgroundImage: 'radial-gradient(ellipse at bottom, rgba(255,60,60,0.18), transparent 60%), url(/theme-red.jpg)',
+              backgroundImage: 'radial-gradient(ellipse at bottom, rgba(255,60,60,0.18), transparent 60%), url(/assets/landing-red.jpg)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               opacity: 0.35,
