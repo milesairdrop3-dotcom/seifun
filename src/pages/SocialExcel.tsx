@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MessageSquare, Send, Image as ImageIcon, ExternalLink, Sparkles } from 'lucide-react';
 
-type PulsePost = {
+type ExcelPost = {
   id: string;
   author: string;
   handle: string;
@@ -12,13 +12,13 @@ type PulsePost = {
   source?: 'x' | 'native';
 };
 
-const initialFeed: PulsePost[] = [
+const initialFeed: ExcelPost[] = [
   {
     id: '1',
     author: 'Seifun',
     handle: '@seifun_ai',
     avatar: '/Seifu.png',
-    content: 'Welcome to Pulse — follow fresh token news and act fast with Seilor.',
+    content: 'Welcome to Excel — follow fresh token news and act fast with Seilor.',
     time: 'Just now',
     source: 'native',
   },
@@ -33,9 +33,9 @@ const initialFeed: PulsePost[] = [
   },
 ];
 
-const SocialPulse: React.FC = () => {
+const SocialExcel: React.FC = () => {
   const [text, setText] = useState('');
-  const [feed, setFeed] = useState<PulsePost[]>(initialFeed);
+  const [feed, setFeed] = useState<ExcelPost[]>(initialFeed);
 
   const submitPost = () => {
     const trimmed = text.trim();
@@ -59,7 +59,7 @@ const SocialPulse: React.FC = () => {
     <div className="app-bg-primary min-h-screen">
       <div className="app-container py-6">
         <div className="flex items-center justify-between mb-4">
-          <h1 className="app-heading-lg">Pulse</h1>
+          <h1 className="app-heading-lg">Excel</h1>
           <Link to="/app/seilor" className="app-btn app-btn-primary flex items-center">
             <Sparkles className="w-4 h-4 mr-2" />
             Ask Seilor
@@ -125,5 +125,5 @@ const SocialPulse: React.FC = () => {
   );
 };
 
-export default SocialPulse;
+export default SocialExcel;
 

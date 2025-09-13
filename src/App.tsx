@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AppHeaderSafe from './components/AppHeaderSafe';
 import AppFooter from './components/AppFooter';
 import MobileBottomBar from './components/MobileBottomBar';
-import SocialPulse from './pages/SocialPulse';
+import SocialExcel from './pages/SocialExcel';
 import SeifunLaunch from './pages/SeifunLaunch';
 import SeiList from './pages/SeiList';
 import SafeChecker from './pages/SafeChecker';
@@ -57,10 +57,10 @@ function App() {
               <AppFooter />
             </div>
           } />
-          <Route path="/app/pulse" element={
+          <Route path="/app/excel" element={
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
-              <SocialPulse />
+              <SocialExcel />
               <div className="h-20 md:hidden" />
               <MobileBottomBar />
               <AppFooter />

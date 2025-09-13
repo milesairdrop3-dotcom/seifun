@@ -24,8 +24,8 @@ const MobileBottomBar: React.FC = () => {
       icon: <Search className="w-5 h-5" />,
     },
     {
-      path: '/app/pulse',
-      label: 'Pulse',
+      path: '/app/excel',
+      label: 'Excel',
       icon: <MessageCircle className="w-6 h-6" />,
       isCenter: true,
     },
