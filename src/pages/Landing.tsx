@@ -36,7 +36,7 @@ const Landing = () => {
         <div className="absolute inset-0 -z-10">
           {/* Optional video background with image poster fallback */}
           <video
-            className="absolute inset-0 w-full h-full object-cover opacity-90"
+            className="landing-video-bg opacity-90"
             autoPlay
             muted
             loop
@@ -46,6 +46,7 @@ const Landing = () => {
           >
             <source src={`${import.meta.env.BASE_URL || ''}assets/landing-bg.webm`} type="video/webm" />
             <source src={`${import.meta.env.BASE_URL || ''}assets/landing-bg.mp4`} type="video/mp4" />
+            <source src={`${import.meta.env.BASE_URL || ''}assets/Generating_Video_Of_Blue_World.mp4`} type="video/mp4" />
           </video>
           {/* Base bluish cosmos image (kept underneath as final fallback) */}
           <img
