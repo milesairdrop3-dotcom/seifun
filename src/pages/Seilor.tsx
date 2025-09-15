@@ -183,7 +183,7 @@ const Seilor = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-[#1a0000] to-slate-900">
       {/* Processing overlay */}
       {isProcessingAction && (
         <div className="fixed inset-0 z-[60] bg-slate-900/80 backdrop-blur-sm flex items-center justify-center">

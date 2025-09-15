@@ -57,9 +57,7 @@ const SeifunLaunch = () => {
       {/* Header */}
       <div className="app-bg-secondary border-b app-border">
         <div className="app-container py-8">
-          <h1 className="app-heading-xl app-text-primary mb-4">
-            Seifun.launch
-          </h1>
+          <h1 className="app-heading-xl app-text-primary mb-4">Seifun Launch</h1>
           <p className="app-text-lg max-w-3xl">
             Discover the latest and most promising tokens on the Sei blockchain. 
             Launch your own token or invest in emerging projects with confidence.

@@ -4,6 +4,7 @@ import AppHeaderSafe from './components/AppHeaderSafe';
 import AppFooter from './components/AppFooter';
 import MobileBottomBar from './components/MobileBottomBar';
 import SocialExcel from './pages/SocialExcel';
+import Portfolio from './pages/Portfolio';
 import SeifunLaunch from './pages/SeifunLaunch';
 import SeiList from './pages/SeiList';
 import SafeChecker from './pages/SafeChecker';
@@ -96,6 +97,15 @@ function App() {
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
               <RealTimeChart />
+              <div className="h-20 md:hidden" />
+              <MobileBottomBar />
+              <AppFooter />
+            </div>
+          } />
+          <Route path="/app/portfolio" element={
+            <div className="min-h-screen app-bg-primary">
+              <AppHeaderSafe />
+              <Portfolio />
               <div className="h-20 md:hidden" />
               <MobileBottomBar />
               <AppFooter />

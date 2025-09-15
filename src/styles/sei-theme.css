@@ -751,6 +751,9 @@
 
 .mobile-bottom-safe { height: env(safe-area-inset-bottom); }
 
+/* Seilor tab red accent when active */
+.mobile-tab-seilor.active { background: rgba(239, 68, 68, 0.18); color: #fecaca; border: 1px solid rgba(239, 68, 68, 0.4); }
+
 /* Landing video background helper */
 .landing-video-bg {
   position: absolute;

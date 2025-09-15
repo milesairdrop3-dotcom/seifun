@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, MessageCircle, BarChart3, Bot, Shield } from 'lucide-react';
+import { Home, MessageCircle, BarChart3, Bot, Shield, Wallet } from 'lucide-react';
 
 type TabItem = {
   path: string;
@@ -30,14 +30,14 @@ const MobileBottomBar: React.FC = () => {
       isCenter: true,
     },
     {
-      path: '/app/charts',
-      label: 'Charts',
-      icon: <BarChart3 className="w-5 h-5" />,
-    },
-    {
       path: '/app/seilor',
       label: 'Seilor',
       icon: <Bot className="w-5 h-5" />,
+    },
+    {
+      path: '/app/portfolio',
+      label: 'Wallet',
+      icon: <Wallet className="w-5 h-5" />,
     },
   ];
 
@@ -52,7 +52,7 @@ const MobileBottomBar: React.FC = () => {
             to={t.path}
             className={`${t.isCenter ? 'mobile-tab-center' : 'mobile-tab'} ${
               isActive(t.path) ? 'active' : ''
-            }`}
+            } ${t.label === 'Seilor' ? 'mobile-tab-seilor' : ''}`}
             aria-label={t.label}
           >
             <div className="icon">{t.icon}</div>
