@@ -77,11 +77,7 @@ const SocialExcel: React.FC = () => {
                 placeholder="Share news or insights…"
                 className="w-full app-input resize-none min-h-[72px]"
               />
-              <div className="flex items-center justify-between mt-2">
-                <button className="app-btn app-btn-secondary flex items-center">
-                  <ImageIcon className="w-4 h-4 mr-2" />
-                  Media
-                </button>
+              <div className="flex items-center justify-end mt-2">
                 <button onClick={submitPost} className="app-btn app-btn-primary flex items-center">
                   <Send className="w-4 h-4 mr-2" />
                   Post
