@@ -34,27 +34,24 @@ const Landing = () => {
       <section className="relative overflow-hidden min-h-[85vh] flex items-center">
         {/* Blue cosmos image */}
         <div className="absolute inset-0 -z-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: 'linear-gradient(rgba(2,6,23,0.6), rgba(2,6,23,0.85)), url(/assets/landing-blue.jpg)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              opacity: 0.9,
-            }}
+          {/* Base bluish cosmos image */}
+          <img
+            src="/assets/landing-blue.jpg"
+            alt=""
             aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover opacity-90"
+            loading="eager"
           />
-          {/* Red planet image layer for depth */}
-          <div
-            className="absolute inset-0 mix-blend-screen"
-            style={{
-              backgroundImage: 'radial-gradient(ellipse at bottom, rgba(255,60,60,0.18), transparent 60%), url(/assets/landing-red.jpg)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              opacity: 0.35,
-            }}
+          {/* Red glow overlay image */}
+          <img
+            src="/assets/landing-red.jpg"
+            alt=""
             aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-40"
+            loading="eager"
           />
+          {/* Dark gradient for readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/70" aria-hidden="true" />
           {/* Flash parallel streaks */}
           <div className="flash-streaks" />
         </div>
