@@ -34,23 +34,34 @@ const Landing = () => {
       <section className="relative overflow-hidden min-h-[85vh] flex items-center">
         {/* Blue cosmos image */}
         <div className="absolute inset-0 -z-10">
-          {/* Base bluish cosmos image */}
+          {/* Optional video background with image poster fallback */}
+          <video
+            className="absolute inset-0 w-full h-full object-cover opacity-90"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={`${import.meta.env.BASE_URL || ''}assets/landing-blue.jpg`}
+            aria-hidden="true"
+          >
+            <source src={`${import.meta.env.BASE_URL || ''}assets/landing-bg.webm`} type="video/webm" />
+            <source src={`${import.meta.env.BASE_URL || ''}assets/landing-bg.mp4`} type="video/mp4" />
+          </video>
+          {/* Base bluish cosmos image (kept underneath as final fallback) */}
           <img
             src={`${import.meta.env.BASE_URL || ''}assets/landing-blue.jpg`}
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover opacity-90"
+            className="absolute inset-0 w-full h-full object-cover opacity-80"
             loading="eager"
-            onError={undefined}
           />
           {/* Red glow overlay image */}
           <img
             src={`${import.meta.env.BASE_URL || ''}assets/landing-red.jpg`}
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-40"
+            className="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-35"
             loading="eager"
-            onError={undefined}
           />
           {/* Bluish gradient for readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-blue-950/50 via-blue-900/55 to-slate-950/75" aria-hidden="true" />
