@@ -36,21 +36,21 @@ const Landing = () => {
         <div className="absolute inset-0 -z-10">
           {/* Base bluish cosmos image */}
           <img
-            src="/assets/landing-blue.jpg"
+            src={`${import.meta.env.BASE_URL || ''}assets/landing-blue.jpg`}
             alt=""
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover opacity-90"
             loading="eager"
-            onError={(e)=>{ try { (e.target as HTMLImageElement).style.display='none' } catch {} }}
+            onError={undefined}
           />
           {/* Red glow overlay image */}
           <img
-            src="/assets/landing-red.jpg"
+            src={`${import.meta.env.BASE_URL || ''}assets/landing-red.jpg`}
             alt=""
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-40"
             loading="eager"
-            onError={(e)=>{ try { (e.target as HTMLImageElement).style.display='none' } catch {} }}
+            onError={undefined}
           />
           {/* Bluish gradient for readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-blue-950/50 via-blue-900/55 to-slate-950/75" aria-hidden="true" />
