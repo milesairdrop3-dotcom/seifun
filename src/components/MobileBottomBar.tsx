@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Search, MessageCircle, BarChart3, Bot } from 'lucide-react';
+import { Home, MessageCircle, BarChart3, Bot, Shield } from 'lucide-react';
 
 type TabItem = {
   path: string;
@@ -14,14 +14,14 @@ const MobileBottomBar: React.FC = () => {
 
   const tabs: TabItem[] = [
     {
-      path: '/app/launch',
+      path: '/',
       label: 'Home',
       icon: <Home className="w-5 h-5" />,
     },
     {
-      path: '/app/seilist',
-      label: 'List',
-      icon: <Search className="w-5 h-5" />,
+      path: '/app/safechecker',
+      label: 'Safe',
+      icon: <Shield className="w-5 h-5" />,
     },
     {
       path: '/app/excel',
@@ -31,12 +31,12 @@ const MobileBottomBar: React.FC = () => {
     },
     {
       path: '/app/charts',
-      label: 'Analytics',
+      label: 'Charts',
       icon: <BarChart3 className="w-5 h-5" />,
     },
     {
       path: '/app/seilor',
-      label: 'Agent',
+      label: 'Seilor',
       icon: <Bot className="w-5 h-5" />,
     },
   ];

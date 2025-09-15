@@ -18,9 +18,17 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          {/* Show Landing at both / and /app for clarity */}
-          <Route path="/app" element={<Landing />} />
+          {/* Public landing at root; App home at /app (Seilor 0) */}
           <Route path="/" element={<Landing />} />
+          <Route path="/app" element={
+            <div className="min-h-screen app-bg-primary">
+              <AppHeaderSafe />
+              <Seilor />
+              <div className="h-20 md:hidden" />
+              <MobileBottomBar />
+              <AppFooter />
+            </div>
+          } />
           <Route path="/app/launch" element={
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
