@@ -41,6 +41,7 @@ const Landing = () => {
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover opacity-90"
             loading="eager"
+            onError={(e)=>{ try { (e.target as HTMLImageElement).style.display='none' } catch {} }}
           />
           {/* Red glow overlay image */}
           <img
@@ -49,9 +50,10 @@ const Landing = () => {
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-40"
             loading="eager"
+            onError={(e)=>{ try { (e.target as HTMLImageElement).style.display='none' } catch {} }}
           />
-          {/* Dark gradient for readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/70" aria-hidden="true" />
+          {/* Bluish gradient for readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-950/50 via-blue-900/55 to-slate-950/75" aria-hidden="true" />
           {/* Flash parallel streaks */}
           <div className="flash-streaks" />
         </div>
