@@ -71,6 +71,15 @@ export class ChatBrain {
   // Main chat processing pipeline
   public async processMessage(userMessage: string): Promise<ChatResponse> {
     try {
+      // Quick path: parse NL intent via versioned endpoint
+      try {
+        const res = await fetch('/.netlify/functions/nl-intent-parse', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: userMessage }) })
+        if (res.ok) {
+          const intent = await res.json()
+          ;(this as any)._lastParsedIntent = intent
+        }
+      } catch {}
+
       // Update session stats
       this.context.sessionData!.messageCount++;
       
