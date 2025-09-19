@@ -42,11 +42,12 @@ const Landing = () => {
             playsInline
             poster={`${import.meta.env.BASE_URL || ''}assets/landing-blue.jpg`}
             aria-hidden="true"
+            onError={(e) => {
+              console.log('Video failed to load, falling back to image');
+              e.currentTarget.style.display = 'none';
+            }}
           >
-            <source src="https://github.com/milesairdrop3-dotcom/seifun/raw/main/public/assets/Generating_Video_Of_Blue_World.mp4" type="video/mp4" />
             <source src={`${import.meta.env.BASE_URL || ''}assets/Generating_Video_Of_Blue_World.mp4`} type="video/mp4" />
-            <source src={`${import.meta.env.BASE_URL || ''}assets/landing-bg.webm`} type="video/webm" />
-            <source src={`${import.meta.env.BASE_URL || ''}assets/landing-bg.mp4`} type="video/mp4" />
           </video>
           {/* Base bluish cosmos image (kept underneath as final fallback) */}
           <img
