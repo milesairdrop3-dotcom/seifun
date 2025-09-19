@@ -33,9 +33,9 @@ const Landing = () => {
       {/* Full-width background video hero */}
       <section className="relative overflow-hidden min-h-screen flex items-center">
         {/* Full-width background video */}
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 -z-10 bg-black">
           <video
-            className="w-full h-full object-cover opacity-90"
+            className="w-full h-full object-cover"
             autoPlay
             muted
             loop
@@ -47,8 +47,9 @@ const Landing = () => {
               e.currentTarget.style.display = 'none';
             }}
           >
-            <source src={`https://raw.githubusercontent.com/milesairdrop3-dotcom/seifun/main/public/assets/Generating_Video_Of_Blue_World.mp4`} type="video/mp4" />
+            {/* Prefer local CDN-served asset first for best quality; GitHub raw as fallback */}
             <source src={`${import.meta.env.BASE_URL || ''}assets/Generating_Video_Of_Blue_World.mp4`} type="video/mp4" />
+            <source src={`https://raw.githubusercontent.com/milesairdrop3-dotcom/seifun/main/public/assets/Generating_Video_Of_Blue_World.mp4`} type="video/mp4" />
           </video>
           {/* No image/overlay fallbacks to keep pure video background */}
         </div>
