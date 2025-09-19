@@ -183,10 +183,7 @@ const Seilor = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-[#1a0000] to-slate-900 relative">
-      {/* Red theme overlay on blue background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-red-800/15 to-red-900/20 pointer-events-none z-0"></div>
-      <div className="relative z-10">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-[#1a0000] to-slate-900">
       {/* Processing overlay */}
       {isProcessingAction && (
         <div className="fixed inset-0 z-[60] bg-slate-900/80 backdrop-blur-sm flex items-center justify-center">
@@ -237,14 +234,9 @@ const Seilor = () => {
             <div className="bg-slate-800/50 rounded-2xl p-4 backdrop-blur-sm border border-slate-700/50">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-white">Navigation</h3>
-                <div className="flex items-center gap-2">
-                  <button onClick={() => setActivePanel('chat')} className="p-1 text-slate-400 hover:text-white hover:bg-slate-700/50 rounded transition-colors" title="Cancel Navigation">
-                    <X className="w-4 h-4" />
-                  </button>
-                  <button onClick={() => setSidebarCollapsed(true)} className="hidden lg:block p-1 text-slate-400 hover:text-white hover:bg-slate-700/50 rounded transition-colors" title="Collapse Sidebar">
-                    <X className="w-4 h-4" />
-                  </button>
-                </div>
+                <button onClick={() => setSidebarCollapsed(true)} className="hidden lg:block p-1 text-slate-400 hover:text-white hover:bg-slate-700/50 rounded transition-colors" title="Collapse Sidebar">
+                  <X className="w-4 h-4" />
+                </button>
               </div>
               <nav className="space-y-2">
                 {panels.map(panel => {
@@ -265,12 +257,6 @@ const Seilor = () => {
             <div className="bg-slate-800/50 rounded-2xl backdrop-blur-sm border border-slate-700/50 overflow-hidden">
               {activePanel === 'chat' && (
                 <div className={`${sidebarCollapsed ? 'h-[80vh]' : 'h-[600px]'} flex flex-col`}>
-                  <div className="flex items-center justify-between p-4 border-b border-slate-700/50">
-                    <h2 className="text-lg font-semibold text-white">AI Chat</h2>
-                    <button onClick={() => setActivePanel('history')} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700/50 rounded transition-colors" title="Cancel Chat View">
-                      <X className="w-4 h-4" />
-                    </button>
-                  </div>
                   <div className="flex-1 overflow-y-auto p-6 space-y-4">
                     {chatMessages.length > 0 && chatMessages.map(msg => (
                       <div key={msg.id} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -348,12 +334,7 @@ const Seilor = () => {
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-6">
                     <h2 className="text-xl font-bold text-white">Todo List</h2>
-                    <div className="flex items-center gap-4">
-                      <div className="text-sm text-slate-400">{todos.filter(t => !t.completed).length} pending</div>
-                      <button onClick={() => setActivePanel('chat')} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700/50 rounded transition-colors" title="Cancel Todo View">
-                        <X className="w-4 h-4" />
-                      </button>
-                    </div>
+                    <div className="text-sm text-slate-400">{todos.filter(t => !t.completed).length} pending</div>
                   </div>
                   <div className="flex space-x-3 mb-6">
                     <input type="text" value={newTodo} onChange={(e) => setNewTodo(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && handleAddTodo()} placeholder="Add a new task..." className="flex-1 bg-slate-700/50 border border-slate-600/50 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:border-red-500/50 focus:ring-1 focus:ring-red-500/50 focus:outline-none" />
@@ -389,14 +370,9 @@ const Seilor = () => {
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h2 className="text-xl font-bold text-white">AI Tools</h2>
-                    <div className="flex items-center gap-2">
-                      <button onClick={() => setToolsCollapsed(!toolsCollapsed)} className="px-3 py-1 text-xs rounded-lg bg-slate-700/60 text-slate-200 border border-slate-600/60 lg:hidden">
-                        {toolsCollapsed ? 'Show' : 'Hide'}
-                      </button>
-                      <button onClick={() => setActivePanel('chat')} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700/50 rounded transition-colors" title="Cancel AI Tools View">
-                        <X className="w-4 h-4" />
-                      </button>
-                    </div>
+                    <button onClick={() => setToolsCollapsed(!toolsCollapsed)} className="px-3 py-1 text-xs rounded-lg bg-slate-700/60 text-slate-200 border border-slate-600/60 lg:hidden">
+                      {toolsCollapsed ? 'Show' : 'Hide'}
+                    </button>
                   </div>
                   {!toolsCollapsed && (
                     <div className="lg:hidden mb-4 text-slate-300 text-xs">Tools are collapsed for mobile convenience.</div>
@@ -409,12 +385,7 @@ const Seilor = () => {
 
               {activePanel === 'history' && (
                 <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-xl font-bold text-white">Chat History</h2>
-                    <button onClick={() => setActivePanel('chat')} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700/50 rounded transition-colors" title="Cancel History View">
-                      <X className="w-4 h-4" />
-                    </button>
-                  </div>
+                  <h2 className="text-xl font-bold text-white mb-4">Chat History</h2>
                   <div className="text-slate-400">
                     <p>Chat history feature coming soon...</p>
                     <p className="text-sm mt-2">Your conversations with Seilor 0 will be saved here.</p>
@@ -424,12 +395,7 @@ const Seilor = () => {
 
               {activePanel === 'transactions' && (
                 <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-xl font-bold text-white">Transactions</h2>
-                    <button onClick={() => setActivePanel('chat')} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700/50 rounded transition-colors" title="Cancel Transactions View">
-                      <X className="w-4 h-4" />
-                    </button>
-                  </div>
+                  <h2 className="text-xl font-bold text-white mb-4">Transactions</h2>
                   <div className="flex items-center gap-2 mb-4">
                     <input value={watchAddress} onChange={(e)=>setWatchAddress(e.target.value)} placeholder="0x... address" className="flex-1 bg-slate-700/50 border border-slate-600/50 rounded-xl px-3 py-2 text-white" />
                     <button onClick={fetchTransactions} className="px-3 py-2 bg-slate-700/60 border border-slate-600/60 rounded-lg text-slate-200">Fetch</button>
@@ -461,7 +427,6 @@ const Seilor = () => {
             </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
   );
