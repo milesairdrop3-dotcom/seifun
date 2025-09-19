@@ -22,6 +22,8 @@ import { AIInterface } from '../components/AIInterface';
 import { ChatMemoryService } from '../services/ChatMemoryService';
 import { LocalLLMService } from '../services/LocalLLMService';
 import { IPFSUploader } from '../utils/ipfsUpload';
+import { parseIntent, ParsedIntent } from '../utils/intentApi';
+import { fetchRisk, RiskResult } from '../utils/riskApi';
 // Full Seilor 0 UI defined below. Backup remains at `SeilorOld.tsx.backup` if needed.
 const Seilor = () => {
   const [activePanel, setActivePanel] = useState<'chat' | 'history' | 'transactions' | 'todo' | 'ai-tools'>('chat');
@@ -57,6 +59,8 @@ const Seilor = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [watchAddress, setWatchAddress] = useState('');
   const [txs, setTxs] = useState<any[]>([]);
+  const [lastParsedIntent, setLastParsedIntent] = useState<ParsedIntent | null>(null);
+  const [lastRisk, setLastRisk] = useState<RiskResult | null>(null);
 
   const { isConnected, address } = useReownWallet();
 
@@ -109,6 +113,22 @@ const Seilor = () => {
     if (/(^yes\b|\bswap\b|\bstake\b|create\s+token|add\s+liquidity|burn)/i.test(userMessage)) setIsProcessingAction(true)
     await new Promise(r => setTimeout(r, 200));
     try {
+      // Parse NL intent early to render preview (non-blocking for main response)
+      try {
+        const parsed = await parseIntent(userMessage);
+        setLastParsedIntent(parsed);
+        // If token symbol present, attempt risk fetch by resolving symbol to address later (placeholder expects address)
+        // For now, only proceed if user typed a 0x address in the message
+        const addrMatch = userMessage.match(/0x[a-fA-F0-9]{40}/);
+        if (addrMatch) {
+          fetchRisk(addrMatch[0]).then(setLastRisk).catch(()=>{});
+        } else {
+          setLastRisk(null);
+        }
+      } catch {
+        setLastParsedIntent(null);
+        setLastRisk(null);
+      }
       const response = await chatBrain.processMessage(userMessage);
       if (/create\s+(a\s+)?token/i.test(userMessage) && attachedImage) {
         try { const url = await IPFSUploader.uploadLogo(attachedImage); localStorage.setItem('seilor_last_token_logo', url); } catch {}
@@ -258,6 +278,25 @@ const Seilor = () => {
               {activePanel === 'chat' && (
                 <div className={`${sidebarCollapsed ? 'h-[80vh]' : 'h-[600px]'} flex flex-col`}>
                   <div className="flex-1 overflow-y-auto p-6 space-y-4">
+                    {lastParsedIntent && lastParsedIntent.intent === 'swap' && (
+                      <div className="p-4 rounded-xl border border-blue-500/30 bg-blue-500/10 text-white">
+                        <div className="flex items-center justify-between">
+                          <div className="text-sm font-medium">Swap Preview</div>
+                          {lastRisk && (
+                            <div className={`text-xs px-2 py-1 rounded-full border ${lastRisk.riskLevel==='HIGH' ? 'border-red-500 text-red-300' : lastRisk.riskLevel==='MEDIUM' ? 'border-yellow-500 text-yellow-300' : 'border-green-500 text-green-300'}`}>
+                              Risk: {lastRisk.riskLevel} ({lastRisk.securityScore})
+                            </div>
+                          )}
+                        </div>
+                        <div className="mt-2 text-sm">
+                          {lastParsedIntent.amount} {lastParsedIntent.fromToken || ''} → {lastParsedIntent.toToken || ''} • Slippage {lastParsedIntent.maxSlippagePct}% • DEX {lastParsedIntent.preferredDex}
+                        </div>
+                        <div className="mt-3 flex items-center gap-3">
+                          <button className="px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm">Prepare Transaction</button>
+                          <button className="px-3 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-white text-sm" onClick={()=>{ setLastParsedIntent(null); setLastRisk(null); }}>Dismiss</button>
+                        </div>
+                      </div>
+                    )}
                     {chatMessages.length > 0 && chatMessages.map(msg => (
                       <div key={msg.id} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
                         <div className={`max-w-3xl p-4 rounded-2xl ${msg.type === 'user' ? 'bg-red-500/20 text-white border border-red-500/30' : 'bg-slate-700/50 text-slate-100 border border-slate-600/50'}`}>
