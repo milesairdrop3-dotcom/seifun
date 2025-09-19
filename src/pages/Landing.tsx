@@ -40,6 +40,7 @@ const Landing = () => {
             muted
             loop
             playsInline
+            preload="auto"
             poster={`${import.meta.env.BASE_URL || ''}assets/landing-blue.jpg`}
             aria-hidden="true"
             onError={(e) => {
@@ -87,31 +88,29 @@ const Landing = () => {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </div>
-            {/* Inline footer row (no extra bar) */}
-            <div className="mt-10 flex items-center justify-center gap-4 text-sm">
-              <div className="flex items-center gap-2 landing-text-muted">
-                <img src="/Seifu.png" alt="Seifun Logo" className="w-5 h-5 rounded-full opacity-80" />
-                <span>Seifun</span>
-              </div>
-              <span className="landing-text-muted">•</span>
-              <a
-                href="https://x.com/seifu_trade"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 landing-text-muted hover:landing-text-primary"
-                aria-label="Follow @seifu_trade on X"
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-80">
-                  <path d="M18.9 3H22L14.5 12.1L22.6 21H16.9L11.9 15.2L6.2 21H3.1L10.1 12.5L2.3 3H8.2L12.7 8.3L18.9 3Z" fill="currentColor"/>
-                </svg>
-                <span>@seifu_trade</span>
-              </a>
-              <span className="landing-text-muted">•</span>
-              <div className="landing-text-muted">© 2025 on Sei</div>
-            </div>
+            {/* Footer spacer replaced with a fixed lower footer */}
           </div>
         </div>
       </section>
+      {/* Lower, minimal footer */}
+      <div className="pointer-events-none select-none">
+        <div className="fixed bottom-6 inset-x-0 flex justify-center">
+          <div className="inline-flex items-center gap-6 px-5 py-3 rounded-full bg-slate-950/40 border border-white/10 backdrop-blur-md">
+            <a
+              href="https://x.com/seifu_trade"
+              target="_blank"
+              rel="noreferrer"
+              className="pointer-events-auto inline-flex items-center justify-center text-white/80 hover:text-white transition-colors"
+              aria-label="Follow on X"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.9 3H22L14.5 12.1L22.6 21H16.9L11.9 15.2L6.2 21H3.1L10.1 12.5L2.3 3H8.2L12.7 8.3L18.9 3Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <div className="text-white/80 text-base">© 2025</div>
+          </div>
+        </div>
+      </div>
       {/* No separate footer bar to avoid duplication */}
     </div>
   );
