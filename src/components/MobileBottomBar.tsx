@@ -24,15 +24,10 @@ const MobileBottomBar: React.FC = () => {
       icon: <Shield className="w-5 h-5" />,
     },
     {
-      path: '/app/excel',
-      label: 'Excel',
-      icon: <MessageCircle className="w-6 h-6" />,
-      isCenter: true,
-    },
-    {
       path: '/app/seilor',
       label: 'Seilor',
       icon: <Bot className="w-5 h-5" />,
+      isCenter: true,
     },
     {
       path: '/app/portfolio',

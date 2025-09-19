@@ -24,19 +24,18 @@ const Landing = () => {
             </Link>
 
             <Link to="/app/launch" className="landing-btn solana-cta">
-              Launch
+              Try
             </Link>
           </div>
         </div>
       </nav>
 
-      {/* Minimal Hero with themed imagery overlays */}
-      <section className="relative overflow-hidden min-h-[85vh] flex items-center">
-        {/* Blue cosmos image */}
+      {/* Full-width background video hero */}
+      <section className="relative overflow-hidden min-h-screen flex items-center">
+        {/* Full-width background video */}
         <div className="absolute inset-0 -z-10">
-          {/* Optional video background with image poster fallback */}
           <video
-            className="landing-video-bg opacity-90"
+            className="w-full h-full object-cover opacity-90"
             autoPlay
             muted
             loop
@@ -44,9 +43,10 @@ const Landing = () => {
             poster={`${import.meta.env.BASE_URL || ''}assets/landing-blue.jpg`}
             aria-hidden="true"
           >
+            <source src="https://github.com/milesairdrop3-dotcom/seifun/raw/main/public/assets/Generating_Video_Of_Blue_World.mp4" type="video/mp4" />
+            <source src={`${import.meta.env.BASE_URL || ''}assets/Generating_Video_Of_Blue_World.mp4`} type="video/mp4" />
             <source src={`${import.meta.env.BASE_URL || ''}assets/landing-bg.webm`} type="video/webm" />
             <source src={`${import.meta.env.BASE_URL || ''}assets/landing-bg.mp4`} type="video/mp4" />
-            <source src={`${import.meta.env.BASE_URL || ''}assets/Generating_Video_Of_Blue_World.mp4`} type="video/mp4" />
           </video>
           {/* Base bluish cosmos image (kept underneath as final fallback) */}
           <img
@@ -80,13 +80,10 @@ const Landing = () => {
               <span className="block landing-sei-blue">Build, Trade, and Launch—Fast</span>
             </h1>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link to="/app/launch" className="landing-btn solana-cta">
+              <Link to="/app/launch" className="landing-btn beta-cta-btn animate-pulse hover:animate-none transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
                 <Rocket className="w-5 h-5 mr-2" />
-                Try Test
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
-              <Link to="/app/launch" className="landing-btn beta-cta-btn">
                 Apply for Beta Test
+                <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </div>
             {/* Inline footer row (no extra bar) */}

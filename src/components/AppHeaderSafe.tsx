@@ -100,12 +100,6 @@ const AppHeaderSafe = () => {
               SafeChecker
             </Link>
             <Link 
-              to="/app/excel" 
-              className={`app-nav-link ${isActive('/app/excel') ? 'active' : ''}`}
-            >
-              Excel
-            </Link>
-            <Link 
               to="/app/seilor" 
               className={`app-nav-link ${isActive('/app/seilor') ? 'active' : ''}`}
             >
@@ -206,7 +200,6 @@ const AppHeaderSafe = () => {
                 Home
               </Link>
               <Link to="/app/safechecker" className={`block px-4 py-2 rounded-lg transition-colors ${isActive('/app/safechecker') ? 'app-bg-secondary app-text-primary' : 'app-text-secondary hover:app-bg-secondary'}`} onClick={() => setIsMobileMenuOpen(false)}>SafeChecker</Link>
-              <Link to="/app/excel" className={`block px-4 py-2 rounded-lg transition-colors ${isActive('/app/excel') ? 'app-bg-secondary app-text-primary' : 'app-text-secondary hover:app-bg-secondary'}`} onClick={() => setIsMobileMenuOpen(false)}>Excel</Link>
               <Link to="/app/seilor" className={`block px-4 py-2 rounded-lg transition-colors ${isActive('/app/seilor') ? 'app-bg-secondary app-text-primary' : 'app-text-secondary hover:app-bg-secondary'}`} onClick={() => setIsMobileMenuOpen(false)}>Seilor 0</Link>
               <Link to="/app/docs" className={`block px-4 py-2 rounded-lg transition-colors ${isActive('/app/docs') ? 'app-bg-secondary app-text-primary' : 'app-text-secondary hover:app-bg-secondary'}`} onClick={() => setIsMobileMenuOpen(false)}>Docs</Link>
             </nav>
