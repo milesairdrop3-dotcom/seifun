@@ -4,7 +4,7 @@ import { Rocket, ArrowRight } from 'lucide-react';
 
 const Landing = () => {
   return (
-    <div className="min-h-screen landing-bg-primary">
+    <div className="min-h-screen">
       {/* Navigation */}
       <nav className="landing-nav sticky top-0 z-50">
         <div className="landing-container">
@@ -41,35 +41,16 @@ const Landing = () => {
             loop
             playsInline
             preload="auto"
-            poster={`${import.meta.env.BASE_URL || ''}assets/landing-blue.jpg`}
             aria-hidden="true"
             onError={(e) => {
               console.log('Video failed to load, falling back to image');
               e.currentTarget.style.display = 'none';
             }}
           >
+            <source src={`https://raw.githubusercontent.com/milesairdrop3-dotcom/seifun/main/public/assets/Generating_Video_Of_Blue_World.mp4`} type="video/mp4" />
             <source src={`${import.meta.env.BASE_URL || ''}assets/Generating_Video_Of_Blue_World.mp4`} type="video/mp4" />
           </video>
-          {/* Base bluish cosmos image (kept underneath as final fallback) */}
-          <img
-            src={`${import.meta.env.BASE_URL || ''}assets/landing-blue.jpg`}
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover opacity-80"
-            loading="eager"
-          />
-          {/* Red glow overlay image */}
-          <img
-            src={`${import.meta.env.BASE_URL || ''}assets/landing-red.jpg`}
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-35"
-            loading="eager"
-          />
-          {/* Bluish gradient for readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-950/50 via-blue-900/55 to-slate-950/75" aria-hidden="true" />
-          {/* Flash parallel streaks */}
-          <div className="flash-streaks" />
+          {/* No image/overlay fallbacks to keep pure video background */}
         </div>
 
         <div className="landing-container">
