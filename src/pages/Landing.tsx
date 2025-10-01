@@ -77,13 +77,13 @@ const Landing = () => {
               <span className="brand-blue-dot" /> Built for the Sei Network
             </div>
             <h1 className="landing-heading-xl mb-6">
-              Agentic AI for DeFi
-              <span className="block landing-sei-blue">Sail, Trade, and Launch—Fast</span>
+              AI Is Making DeFi
+              <span className="block landing-sei-blue">Safer, Fun and Faster</span>
             </h1>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link to="/app/launch" className="landing-btn water-cta-btn animate-pulse hover:animate-none transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
                 <Rocket className="w-5 h-5 mr-2" />
-                Dive In — Beta Waters
+                click to apply for beta
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </div>
