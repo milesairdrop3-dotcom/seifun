@@ -91,7 +91,7 @@ const Landing = () => {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </div>
-            {/* Footer spacer replaced with a fixed lower footer */
+            {/* Footer spacer replaced with a fixed lower footer */}
           </div>
         </div>
       </section>
