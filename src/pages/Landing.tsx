@@ -34,27 +34,19 @@ const Landing = () => {
       <section className="relative overflow-hidden min-h-screen flex items-center">
         {/* Background image with responsive formats and graceful fallback */}
         <div className="absolute inset-0 -z-10 bg-[#0b1e3a]">
-          <picture>
-            <source srcSet={`${import.meta.env.BASE_URL || ''}assets/landing-hero.avif`} type="image/avif" />
-            <source srcSet={`${import.meta.env.BASE_URL || ''}assets/landing-hero.webp`} type="image/webp" />
-            <img
-              src={`${import.meta.env.BASE_URL || ''}assets/landing-hero.jpg`}
-              alt=""
-              aria-hidden="true"
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                // Try local bg first, then GitHub raw as final fallback
-                const img = e.currentTarget as HTMLImageElement;
-                const localFallback = `${import.meta.env.BASE_URL || ''}assets/landing-bg.jpg`;
-                const githubRaw = 'https://raw.githubusercontent.com/milesairdrop3-dotcom/seifun/main/public/assets/landing-bg.jpg';
-                if (img.src !== localFallback) {
-                  img.src = localFallback;
-                } else if (img.src !== githubRaw) {
-                  img.src = githubRaw;
-                }
-              }}
-            />
-          </picture>
+          <img
+            src={`${import.meta.env.BASE_URL || ''}assets/landing-bg.jpg`}
+            alt=""
+            aria-hidden="true"
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              const img = e.currentTarget as HTMLImageElement;
+              const githubRaw = 'https://raw.githubusercontent.com/milesairdrop3-dotcom/seifun/main/public/assets/landing-bg.jpg';
+              if (img.src !== githubRaw) {
+                img.src = githubRaw;
+              }
+            }}
+          />
           {/* Contrast overlays */}
           <div className="absolute inset-0 bg-sky-900/25" />
           <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-slate-950/70 via-slate-900/30 to-transparent" />
