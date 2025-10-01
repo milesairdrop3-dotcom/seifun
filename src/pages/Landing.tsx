@@ -1,8 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Rocket, ArrowRight } from 'lucide-react';
 
 const Landing = () => {
+  const navigate = useNavigate();
+  const [showTerms, setShowTerms] = React.useState(false);
+  const [scrolledToEnd, setScrolledToEnd] = React.useState(false);
+  const [accepted, setAccepted] = React.useState(false);
+  const termsRef = React.useRef<HTMLDivElement | null>(null);
+
+  const handleOpenTerms = () => {
+    setShowTerms(true);
+    setScrolledToEnd(false);
+    setAccepted(false);
+    // focus will be handled by browser
+  };
+
+  const handleScrollTerms = () => {
+    const el = termsRef.current;
+    if (!el) return;
+    if (el.scrollTop + el.clientHeight >= el.scrollHeight - 8) {
+      setScrolledToEnd(true);
+    }
+  };
+
+  const handleProceed = () => {
+    if (accepted && scrolledToEnd) {
+      setShowTerms(false);
+      navigate('/app/launch');
+    }
+  };
+
   return (
     <div className="min-h-screen">
       {/* Navigation */}
@@ -81,17 +109,119 @@ const Landing = () => {
               <span className="block landing-sei-blue">Safer, Fun and Faster</span>
             </h1>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link
-                to="/app/launch"
+              <button
+                type="button"
+                onClick={handleOpenTerms}
                 className="landing-btn pro-cta-btn transition-all duration-300 hover:scale-[1.015]"
               >
                 click to apply for beta
-              </Link>
+              </button>
             </div>
             {/* Footer spacer replaced with a fixed lower footer */}
           </div>
         </div>
       </section>
+      {/* Terms & Conditions Modal */}
+      {showTerms && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/60" onClick={() => setShowTerms(false)} />
+          <div className="relative w-full max-w-2xl bg-white text-slate-900 rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
+            <div className="px-6 py-5 border-b border-slate-200">
+              <h2 className="text-xl font-semibold">Seifun Project – Terms & Conditions</h2>
+              <div className="text-xs text-slate-500 mt-1">Last updated: {new Date().toLocaleDateString()}</div>
+            </div>
+            <div
+              ref={termsRef}
+              onScroll={handleScrollTerms}
+              className="px-6 py-5 max-h-[52vh] overflow-y-auto leading-relaxed text-sm"
+            >
+              <p className="mb-4">Welcome to Seifun. By accessing, using, or participating in the Seifun ecosystem, you agree to the following Terms & Conditions (“Terms”). Please read them carefully before interacting with our platform, smart contracts, or community.</p>
+
+              <h3 className="font-semibold mt-4 mb-2">1. Acceptance of Terms</h3>
+              <p className="mb-3">By connecting your wallet, interacting with Seifun’s smart contracts, or participating in the Seifun ecosystem, you acknowledge that you have read, understood, and agreed to these Terms.</p>
+
+              <h3 className="font-semibold mt-4 mb-2">2. Eligibility</h3>
+              <ul className="list-disc ml-5 mb-3 space-y-1">
+                <li>You must be at least 18 years old or meet the legal age requirements of your jurisdiction.</li>
+                <li>You are solely responsible for ensuring that participation in Seifun complies with the laws of your country.</li>
+              </ul>
+
+              <h3 className="font-semibold mt-4 mb-2">3. No Financial Advice</h3>
+              <ul className="list-disc ml-5 mb-3 space-y-1">
+                <li>Seifun is an experimental Web3 project.</li>
+                <li>Nothing on Seifun should be considered financial, investment, legal, or tax advice.</li>
+                <li>You are solely responsible for your decisions, including transactions, staking, liquidity provision, or token usage.</li>
+              </ul>
+
+              <h3 className="font-semibold mt-4 mb-2">4. Risk Disclosure</h3>
+              <ul className="list-disc ml-5 mb-3 space-y-1">
+                <li><span className="font-medium">Volatility:</span> Digital assets may experience high price fluctuations.</li>
+                <li><span className="font-medium">Smart Contract Risks:</span> There may be bugs, vulnerabilities, or exploits.</li>
+                <li><span className="font-medium">Regulatory Risk:</span> Laws and regulations may change, affecting your ability to use Seifun.</li>
+                <li><span className="font-medium">Loss of Funds:</span> Transactions on blockchain networks are irreversible. Seifun is not responsible for lost or stolen assets.</li>
+              </ul>
+
+              <h3 className="font-semibold mt-4 mb-2">5. User Responsibilities</h3>
+              <ul className="list-disc ml-5 mb-3 space-y-1">
+                <li>Keep your wallet and private keys secure.</li>
+                <li>Do not use Seifun for illegal activities.</li>
+                <li>You acknowledge that participation is voluntary and at your own risk.</li>
+              </ul>
+
+              <h3 className="font-semibold mt-4 mb-2">6. No Guarantees</h3>
+              <ul className="list-disc ml-5 mb-3 space-y-1">
+                <li>Seifun does not guarantee profits, rewards, or any form of return.</li>
+                <li>Token utility, features, or incentives may change as the project evolves.</li>
+              </ul>
+
+              <h3 className="font-semibold mt-4 mb-2">7. Limitation of Liability</h3>
+              <p className="mb-3">Seifun and its contributors are not liable for any direct, indirect, incidental, or consequential losses arising from your use of the platform. Use of Seifun is provided “as is” and “as available.”</p>
+
+              <h3 className="font-semibold mt-4 mb-2">8. Community & Governance</h3>
+              <p className="mb-3">Seifun may introduce community governance features. Participation in governance does not create legal or financial obligations for Seifun contributors.</p>
+
+              <h3 className="font-semibold mt-4 mb-2">9. Amendments</h3>
+              <p className="mb-3">Seifun may update these Terms at any time. Continued use of the platform constitutes acceptance of the updated Terms.</p>
+
+              <h3 className="font-semibold mt-4 mb-2">10. Contact</h3>
+              <p className="mb-2">For any questions, please reach out to the Seifun community via our official channels.</p>
+            </div>
+            <div className="px-6 py-5 border-t border-slate-200 bg-slate-50">
+              <div className="flex items-center justify-between gap-4">
+                <label className="flex items-center gap-2 text-sm text-slate-700">
+                  <input
+                    type="checkbox"
+                    className="h-4 w-4 rounded border-slate-300"
+                    checked={accepted}
+                    onChange={(e) => setAccepted(e.target.checked)}
+                  />
+                  I have read and accept the Terms & Conditions
+                </label>
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    className="px-4 py-2 rounded-lg border border-slate-300 text-slate-700 bg-white hover:bg-slate-100"
+                    onClick={() => setShowTerms(false)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    className={`px-4 py-2 rounded-lg text-white ${accepted && scrolledToEnd ? 'bg-blue-600 hover:bg-blue-700' : 'bg-slate-400 cursor-not-allowed'}`}
+                    disabled={!accepted || !scrolledToEnd}
+                    onClick={handleProceed}
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+              {!scrolledToEnd && (
+                <div className="text-xs text-slate-500 mt-2">Scroll to the bottom to enable Next.</div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
       {/* Lower, minimal footer */}
       <div className="pointer-events-none select-none">
         <div className="fixed bottom-6 inset-x-0 flex justify-center">
