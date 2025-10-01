@@ -30,28 +30,30 @@ const Landing = () => {
         </div>
       </nav>
 
-      {/* Full-width background video hero */}
+      {/* Full-width background image hero */}
       <section className="relative overflow-hidden min-h-screen flex items-center">
-        {/* Full-width background video */}
+        {/* Background image with responsive formats and graceful fallback */}
         <div className="absolute inset-0 -z-10 bg-black">
-          <video
-            className="w-full h-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            aria-hidden="true"
-            onError={(e) => {
-              console.log('Video failed to load, falling back to image');
-              e.currentTarget.style.display = 'none';
-            }}
-          >
-            {/* Prefer local CDN-served asset first for best quality; GitHub raw as fallback */}
-            <source src={`${import.meta.env.BASE_URL || ''}assets/Generating_Video_Of_Blue_World.mp4`} type="video/mp4" />
-            <source src={`https://raw.githubusercontent.com/milesairdrop3-dotcom/seifun/main/public/assets/Generating_Video_Of_Blue_World.mp4`} type="video/mp4" />
-          </video>
-          {/* No image/overlay fallbacks to keep pure video background */}
+          <picture>
+            <source srcSet={`${import.meta.env.BASE_URL || ''}assets/landing-hero.avif`} type="image/avif" />
+            <source srcSet={`${import.meta.env.BASE_URL || ''}assets/landing-hero.webp`} type="image/webp" />
+            <img
+              src={`${import.meta.env.BASE_URL || ''}assets/landing-hero.jpg`}
+              alt=""
+              aria-hidden="true"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                // If the custom hero image is not present yet, fall back to the bundled background
+                const fallback = `${import.meta.env.BASE_URL || ''}assets/landing-bg.jpg`;
+                if ((e.currentTarget as HTMLImageElement).src !== fallback) {
+                  (e.currentTarget as HTMLImageElement).src = fallback;
+                }
+              }}
+            />
+          </picture>
+          {/* Contrast overlays */}
+          <div className="absolute inset-0 bg-slate-900/20" />
+          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-slate-950/70 via-slate-900/30 to-transparent" />
         </div>
 
         <div className="landing-container">
@@ -70,7 +72,7 @@ const Landing = () => {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </div>
-            {/* Footer spacer replaced with a fixed lower footer */}
+            {/* Footer spacer replaced with a fixed lower footer */
           </div>
         </div>
       </section>
