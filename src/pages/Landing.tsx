@@ -43,10 +43,14 @@ const Landing = () => {
               aria-hidden="true"
               className="w-full h-full object-cover"
               onError={(e) => {
-                // If the custom hero image is not present yet, fall back to the bundled background
-                const fallback = `${import.meta.env.BASE_URL || ''}assets/landing-bg.jpg`;
-                if ((e.currentTarget as HTMLImageElement).src !== fallback) {
-                  (e.currentTarget as HTMLImageElement).src = fallback;
+                // Try local bg first, then GitHub raw as final fallback
+                const img = e.currentTarget as HTMLImageElement;
+                const localFallback = `${import.meta.env.BASE_URL || ''}assets/landing-bg.jpg`;
+                const githubRaw = 'https://raw.githubusercontent.com/milesairdrop3-dotcom/seifun/main/public/assets/landing-bg.jpg';
+                if (img.src !== localFallback) {
+                  img.src = localFallback;
+                } else if (img.src !== githubRaw) {
+                  img.src = githubRaw;
                 }
               }}
             />

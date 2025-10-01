@@ -215,9 +215,9 @@
 
 /* Landing Page Navigation */
 .landing-nav {
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .landing-nav-link {
