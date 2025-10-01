@@ -768,3 +768,64 @@
 @media (max-width: 768px) {
   .landing-video-bg { transform: scale(1.2); }
 }
+
+/* Ocean cloud frame overlay (soft white clouds around edges) */
+.cloud-frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(closest-side at 10% 8%, rgba(255,255,255,0.95), rgba(255,255,255,0.85) 55%, transparent 60%) 0 0/40% 40% no-repeat,
+    radial-gradient(closest-side at 90% 9%, rgba(255,255,255,0.95), rgba(255,255,255,0.85) 55%, transparent 60%) 100% 0/40% 40% no-repeat,
+    radial-gradient(closest-side at 8% 92%, rgba(255,255,255,0.95), rgba(255,255,255,0.85) 55%, transparent 60%) 0 100%/40% 40% no-repeat,
+    radial-gradient(closest-side at 92% 92%, rgba(255,255,255,0.95), rgba(255,255,255,0.85) 55%, transparent 60%) 100% 100%/40% 40% no-repeat,
+    radial-gradient(closest-side, rgba(255,255,255,0.9), transparent 70%) 50% 0/70% 35% no-repeat,
+    radial-gradient(closest-side, rgba(255,255,255,0.9), transparent 70%) 50% 100%/70% 35% no-repeat;
+  mix-blend-mode: normal;
+}
+
+/* Ocean snow (bubbles/snow-like droplets falling) */
+.ocean-snow {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ocean-snow .dot {
+  position: absolute;
+  top: -5vh;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 10px rgba(255,255,255,0.6);
+  opacity: 0.9;
+  animation-name: ocean-snow-fall, ocean-snow-drift;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+}
+
+@keyframes ocean-snow-fall {
+  0% { transform: translate3d(var(--drift-x, 0px), -10vh, 0) scale(var(--scale, 1)); opacity: 0; }
+  10% { opacity: 0.9; }
+  100% { transform: translate3d(calc(var(--drift-x, 0px) + var(--drift-amp, 0px)), 110vh, 0) scale(var(--scale, 1)); opacity: 0.95; }
+}
+
+@keyframes ocean-snow-drift {
+  0%, 100% { filter: blur(0.5px); }
+  50% { filter: blur(1.2px); }
+}
+
+/* Water-themed CTA (deep blue gradient) */
+.water-cta-btn {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 6px 18px rgba(30, 64, 175, 0.35);
+}
+.water-cta-btn:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  box-shadow: 0 10px 28px rgba(30, 64, 175, 0.55);
+  transform: translateY(-2px);
+}

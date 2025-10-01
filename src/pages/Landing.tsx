@@ -23,8 +23,8 @@ const Landing = () => {
               </div>
             </Link>
 
-            <Link to="/app/launch" className="landing-btn solana-cta">
-              Try
+            <Link to="/app/launch" className="landing-btn water-cta-btn">
+              Try Testnet
             </Link>
           </div>
         </div>
@@ -33,7 +33,7 @@ const Landing = () => {
       {/* Full-width background image hero */}
       <section className="relative overflow-hidden min-h-screen flex items-center">
         {/* Background image with responsive formats and graceful fallback */}
-        <div className="absolute inset-0 -z-10 bg-black">
+        <div className="absolute inset-0 -z-10 bg-[#0b1e3a]">
           <picture>
             <source srcSet={`${import.meta.env.BASE_URL || ''}assets/landing-hero.avif`} type="image/avif" />
             <source srcSet={`${import.meta.env.BASE_URL || ''}assets/landing-hero.webp`} type="image/webp" />
@@ -52,8 +52,27 @@ const Landing = () => {
             />
           </picture>
           {/* Contrast overlays */}
-          <div className="absolute inset-0 bg-slate-900/20" />
+          <div className="absolute inset-0 bg-sky-900/25" />
           <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-slate-950/70 via-slate-900/30 to-transparent" />
+          {/* Cloud frame and ocean snow overlays */}
+          <div className="cloud-frame" />
+          <div className="ocean-snow" aria-hidden="true">
+            {Array.from({ length: 40 }).map((_, i) => (
+              <span
+                key={i}
+                className="dot"
+                style={{
+                  left: `${(i * 97) % 100}%`,
+                  animationDuration: `${8 + (i % 6)}s, ${4 + (i % 5)}s`,
+                  animationDelay: `${(i % 10) * -0.8}s, ${(i % 7) * -0.6}s`,
+                  // @ts-ignore custom CSS vars used by animations
+                  ['--drift-x']: `${(i % 2 === 0 ? -1 : 1) * (i % 12)}px`,
+                  ['--drift-amp']: `${(i % 9) + 6}px`,
+                  ['--scale']: `${0.6 + (i % 5) * 0.1}`,
+                }}
+              />
+            ))}
+          </div>
         </div>
 
         <div className="landing-container">
@@ -63,12 +82,12 @@ const Landing = () => {
             </div>
             <h1 className="landing-heading-xl mb-6">
               Agentic AI for DeFi
-              <span className="block landing-sei-blue">Build, Trade, and Launch—Fast</span>
+              <span className="block landing-sei-blue">Sail, Trade, and Launch—Fast</span>
             </h1>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link to="/app/launch" className="landing-btn beta-cta-btn animate-pulse hover:animate-none transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
+              <Link to="/app/launch" className="landing-btn water-cta-btn animate-pulse hover:animate-none transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
                 <Rocket className="w-5 h-5 mr-2" />
-                Apply for Beta Test
+                Dive In — Beta Waters
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </div>
