@@ -81,10 +81,11 @@ const Landing = () => {
               <span className="block landing-sei-blue">Safer, Fun and Faster</span>
             </h1>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link to="/app/launch" className="landing-btn water-cta-btn animate-pulse hover:animate-none transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
-                <Rocket className="w-5 h-5 mr-2" />
+              <Link
+                to="/app/launch"
+                className="landing-btn pro-cta-btn transition-all duration-300 hover:scale-[1.015]"
+              >
                 click to apply for beta
-                <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </div>
             {/* Footer spacer replaced with a fixed lower footer */}
