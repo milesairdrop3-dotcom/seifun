@@ -15,6 +15,8 @@
   --landing-border: #374151;
   /* Seifun brand blue (precise) */
   --seifun-brand: #1d4ed8;
+  /* Hero sky blue (match background accent) */
+  --landing-sky-blue: #38bdf8; /* Tailwind sky-400 */
   
   /* Main App Colors (Darker Blue + Deep Blue + Black - Cursor Inspired) */
   --app-bg-primary: #0A0A0A;
@@ -219,9 +221,10 @@
 
 /* Landing Page Navigation */
 .landing-nav {
-  background: transparent;
-  backdrop-filter: none;
-  border-bottom: 0;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
 }
 
 .landing-nav-link {
@@ -866,23 +869,23 @@
 /* White Beta CTA with Seifun brand color and click roll */
 .beta-cta-white {
   background: #ffffff;
-  color: var(--seifun-brand);
-  border: 1px solid rgba(29, 78, 216, 0.22);
-  box-shadow: 0 6px 18px rgba(29, 78, 216, 0.12);
+  color: var(--landing-sky-blue);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.18);
 }
 .beta-cta-white:hover {
-  box-shadow: 0 10px 26px rgba(29, 78, 216, 0.18);
+  box-shadow: 0 10px 26px rgba(56, 189, 248, 0.28);
   transform: translateY(-2px);
 }
 .beta-cta-white:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.28);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.35);
 }
 .beta-cta-white .cta-star {
   margin-right: 0.5rem;
   display: inline-block;
-  color: var(--seifun-brand);
-  filter: drop-shadow(0 0 8px rgba(29, 78, 216, 0.25));
+  color: var(--landing-sky-blue);
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.35));
 }
 @keyframes cta-roll {
   0%   { transform: rotate(0deg) scale(1); }
