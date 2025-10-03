@@ -11,6 +11,13 @@
     <meta property="og:image:alt" content="Seifun ocean hero background" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="/assets/landing-bg.jpg" />
+    <meta name="theme-color" content="#0b1e3a" />
+    <!-- Preload hero background to avoid flash -->
+    <link rel="preload" as="image" href="/assets/landing-bg.jpg" />
+    <!-- Prevent initial background flash before CSS loads -->
+    <style>
+      html, body, #root { background: #0b1e3a; }
+    </style>
     <!-- Fonts: Inter (base) + Space Grotesk (display) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

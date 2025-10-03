@@ -68,7 +68,7 @@ const Landing = () => {
       {/* Full-width background image hero */}
       <section className="relative overflow-hidden min-h-screen flex items-center">
         {/* Background image with responsive formats and graceful fallback */}
-        <div className="absolute inset-0 -z-10 bg-[#0b1e3a]">
+        <div className="absolute inset-0 -z-10" style={{ background: '#0b1e3a' }}>
           <img
             src={`${import.meta.env.BASE_URL || ''}assets/landing-bg.jpg`}
             alt=""

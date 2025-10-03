@@ -3,9 +3,9 @@
 /* Landing Page Theme (Sei Colors - Welcoming) */
 :root {
   /* Landing Page Colors - Sei Theme (Welcoming) */
-  --landing-bg-primary: #0A0A0A;
-  --landing-bg-secondary: #1A1A1A;
-  --landing-bg-tertiary: #2A2A2A;
+  --landing-bg-primary: #0b1e3a; /* match hero base to prevent flash */
+  --landing-bg-secondary: #0F1b33;
+  --landing-bg-tertiary: #10213d;
   --landing-sei-red: #FF3C3C;
   --landing-sei-blue: #3C7AFF;
   --landing-sei-black: #000000;
