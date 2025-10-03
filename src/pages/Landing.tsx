@@ -231,23 +231,53 @@ const Landing = () => {
           </div>
         </div>
       )}
-      {/* Lower, minimal footer */}
-      <div className="pointer-events-none select-none">
-        <div className="fixed bottom-6 inset-x-0 flex justify-center">
-          <div className="inline-flex items-center gap-6 px-5 py-3 rounded-full bg-slate-950/40 border border-white/10 backdrop-blur-md">
-            <a
-              href="https://x.com/seifu_trade"
-              target="_blank"
-              rel="noreferrer"
-              className="pointer-events-auto inline-flex items-center justify-center text-white/80 hover:text-white transition-colors"
-              aria-label="Follow on X"
-            >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18.9 3H22L14.5 12.1L22.6 21H16.9L11.9 15.2L6.2 21H3.1L10.1 12.5L2.3 3H8.2L12.7 8.3L18.9 3Z" fill="currentColor"/>
+      {/* Landing socials - themed */}
+      <div className="landing-socials">
+        <div className="landing-socials-inner">
+          <a
+            href="https://x.com/seifu_trade"
+            target="_blank"
+            rel="noreferrer"
+            className="landing-social-link"
+            aria-label="Follow Seifun on X"
+          >
+            <span className="icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.9 3H22l-7.5 9.1L22.6 21h-5.7l-5-5.8L6.2 21H3.1l7-8.5L2.3 3h5.9l4.5 5.3L18.9 3Z" />
               </svg>
-            </a>
-            <div className="text-white/80 text-base">© 2025</div>
-          </div>
+            </span>
+            <span className="hidden sm:inline">X</span>
+          </a>
+          <a
+            href="https://discord.gg/seifun"
+            target="_blank"
+            rel="noreferrer"
+            className="landing-social-link"
+            aria-label="Join Seifun on Discord"
+          >
+            <span className="icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.317 4.369A17.533 17.533 0 0 0 16.558 3c-.18.321-.388.76-.533 1.106a16.018 16.018 0 0 0-4.05 0A8.258 8.258 0 0 0 11.442 3 17.47 17.47 0 0 0 7.68 4.369C5.707 7.277 5.2 10.094 5.431 12.874c1.7 1.265 3.35 2.036 4.965 2.53.385-.531.73-1.095 1.03-1.687-.58-.221-1.132-.49-1.65-.8.138-.1.273-.204.404-.313 3.178 1.486 6.61 1.486 9.746 0 .132.109.267.213.405.313-.518.31-1.07.579-1.651.8.3.592.645 1.156 1.031 1.687 1.614-.494 3.264-1.265 4.964-2.53.35-4.08-.599-6.866-1.948-8.505ZM9.681 10.965c-.96 0-1.742.885-1.742 1.975 0 1.09.78 1.976 1.742 1.976.962 0 1.743-.886 1.743-1.976s-.781-1.975-1.743-1.975Zm6.638 0c-.962 0-1.743.885-1.743 1.975 0 1.09.78 1.976 1.743 1.976.961 0 1.742-.886 1.742-1.976s-.781-1.975-1.742-1.975Z"/>
+              </svg>
+            </span>
+            <span className="hidden sm:inline">Discord</span>
+          </a>
+          <a
+            href="https://github.com/Seifun1/Seifun"
+            target="_blank"
+            rel="noreferrer"
+            className="landing-social-link"
+            aria-label="View Seifun on GitHub"
+          >
+            <span className="icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 .5C5.648.5.5 5.648.5 12A11.5 11.5 0 0 0 8.35 23.1c.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.36.73-4.07-1.62-4.07-1.62-.55-1.4-1.35-1.77-1.35-1.77-1.1-.76.08-.74.08-.74 1.22.09 1.86 1.26 1.86 1.26 1.08 1.85 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.68-.3-5.5-1.34-5.5-5.97 0-1.32.47-2.39 1.24-3.24-.12-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.24a11.3 11.3 0 0 1 6 0c2.28-1.56 3.29-1.24 3.29-1.24.66 1.64.24 2.86.12 3.16.77.85 1.24 1.92 1.24 3.24 0 4.64-2.82 5.66-5.51 5.96.43.37.82 1.11.82 2.24 0 1.62-.01 2.92-.01 3.31 0 .32.22.69.83.57A11.5 11.5 0 0 0 23.5 12C23.5 5.648 18.352.5 12 .5Z"/>
+              </svg>
+            </span>
+            <span className="hidden sm:inline">GitHub</span>
+          </a>
+          <span className="landing-social-divider" />
+          <span className="landing-socials-copy">© 2025</span>
         </div>
       </div>
       {/* No separate footer bar to avoid duplication */}
