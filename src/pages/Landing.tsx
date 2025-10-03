@@ -8,6 +8,7 @@ const Landing = () => {
   const [scrolledToEnd, setScrolledToEnd] = React.useState(false);
   const [accepted, setAccepted] = React.useState(false);
   const termsRef = React.useRef<HTMLDivElement | null>(null);
+  const [ctaRolling, setCtaRolling] = React.useState(false);
 
   const handleOpenTerms = () => {
     setShowTerms(true);
@@ -29,6 +30,12 @@ const Landing = () => {
       setShowTerms(false);
       navigate('/app/launch');
     }
+  };
+
+  const handleBetaClick = () => {
+    setCtaRolling(true);
+    window.setTimeout(() => setCtaRolling(false), 700);
+    handleOpenTerms();
   };
 
   return (
@@ -111,10 +118,12 @@ const Landing = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button
                 type="button"
-                onClick={handleOpenTerms}
-                className="landing-btn pro-cta-btn transition-all duration-300 hover:scale-[1.015]"
+                onClick={handleBetaClick}
+                className={`landing-btn beta-cta-white transition-all duration-300 hover:scale-[1.015] ${ctaRolling ? 'cta-rolling' : ''}`}
+                aria-label="Click to apply for beta test"
               >
-                click to apply for beta
+                <span className="cta-star" aria-hidden="true">✦</span>
+                <span>Click to apply for beta test</span>
               </button>
             </div>
             {/* Footer spacer replaced with a fixed lower footer */}
