@@ -3,9 +3,9 @@
 /* Landing Page Theme (Sei Colors - Welcoming) */
 :root {
   /* Landing Page Colors - Sei Theme (Welcoming) */
-  --landing-bg-primary: #0A0A0A;
-  --landing-bg-secondary: #1A1A1A;
-  --landing-bg-tertiary: #2A2A2A;
+  --landing-bg-primary: #0b1e3a; /* match hero base to prevent flash */
+  --landing-bg-secondary: #0F1b33;
+  --landing-bg-tertiary: #10213d;
   --landing-sei-red: #FF3C3C;
   --landing-sei-blue: #3C7AFF;
   --landing-sei-black: #000000;
@@ -13,6 +13,10 @@
   --landing-text-secondary: #E5E7EB;
   --landing-text-muted: #9CA3AF;
   --landing-border: #374151;
+  /* Seifun brand blue (precise) */
+  --seifun-brand: #1d4ed8;
+  /* Hero sky blue (match background accent) */
+  --landing-sky-blue: #38bdf8; /* Tailwind sky-400 */
   
   /* Main App Colors (Darker Blue + Deep Blue + Black - Cursor Inspired) */
   --app-bg-primary: #0A0A0A;
@@ -110,6 +114,8 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  font-family: var(--font-display, system-ui);
+  letter-spacing: 0.01em;
 }
 
 .landing-btn-primary {
@@ -181,6 +187,13 @@
   backdrop-filter: blur(10px);
 }
 
+/* Light variant for white-card forms */
+.landing-input.light {
+  background: rgba(255,255,255,0.9);
+  color: #0f172a;
+  border: 1px solid rgba(2,6,23,0.1);
+}
+
 .landing-input:focus {
   outline: none;
   border-color: var(--landing-sei-blue);
@@ -215,9 +228,10 @@
 
 /* Landing Page Navigation */
 .landing-nav {
-  background: transparent;
-  backdrop-filter: none;
-  border-bottom: 0;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
 }
 
 .landing-nav-link {
@@ -261,6 +275,7 @@
   line-height: 1.1;
   color: var(--landing-text-primary);
   letter-spacing: -0.02em;
+  font-family: var(--font-display, system-ui);
 }
 
 .landing-heading-lg {
@@ -269,6 +284,7 @@
   line-height: 1.2;
   color: var(--landing-text-primary);
   letter-spacing: -0.01em;
+  font-family: var(--font-display, system-ui);
 }
 
 .landing-heading-md {
@@ -276,6 +292,7 @@
   font-weight: 600;
   line-height: 1.3;
   color: var(--landing-text-primary);
+  font-family: var(--font-display, system-ui);
 }
 
 .landing-text-lg {
@@ -290,6 +307,7 @@
   font-weight: 700;
   line-height: 1.1;
   color: var(--app-text-primary);
+  font-family: var(--font-display, system-ui);
 }
 
 .app-heading-lg {
@@ -297,6 +315,7 @@
   font-weight: 600;
   line-height: 1.2;
   color: var(--app-text-primary);
+  font-family: var(--font-display, system-ui);
 }
 
 .app-heading-md {
@@ -304,6 +323,7 @@
   font-weight: 600;
   line-height: 1.3;
   color: var(--app-text-primary);
+  font-family: var(--font-display, system-ui);
 }
 
 .app-text-lg {
@@ -671,6 +691,23 @@
   filter: drop-shadow(0 20px 80px rgba(59, 130, 246, 0.3));
 }
 
+/* Hero background image responsiveness */
+.landing-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.06);
+  will-change: transform;
+  transition: transform 8s ease-out;
+}
+@media (max-width: 768px) {
+  .landing-bg-img {
+    transform: scale(1.2);
+    object-position: 50% 30%;
+  }
+}
+
 /* Solana-like deep pink CTA for Seilor (now Launch) */
 .solana-cta {
   background: linear-gradient(135deg, #ff3b8a 0%, #ff5bb3 100%);
@@ -817,6 +854,35 @@
   50% { filter: blur(1.2px); }
 }
 
+/* "Sei Fun" snow-like text droplets */
+.seifun-snow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+.seifun-flake {
+  position: absolute;
+  top: -8vh;
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.25);
+  font-family: var(--font-display, system-ui);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  will-change: transform, opacity;
+  animation: seifun-fall var(--fall, 12s) linear infinite, seifun-wobble var(--wobble, 5s) ease-in-out infinite;
+}
+@keyframes seifun-fall {
+  0% { transform: translate3d(var(--x, 0), -10vh, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.95; }
+  100% { transform: translate3d(calc(var(--x, 0) + var(--xamp, 0)), 110vh, 0) rotate(360deg); opacity: 0.95; }
+}
+@keyframes seifun-wobble {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(var(--xamp, 12px)); }
+}
+
 /* Water-themed CTA (deep blue gradient) */
 .water-cta-btn {
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
@@ -851,4 +917,93 @@
 @keyframes pro-cta-fade {
   0%, 100% { opacity: 0.88; }
   50% { opacity: 1; }
+}
+
+/* White Beta CTA with Seifun brand color and click roll */
+.beta-cta-white {
+  background: #ffffff;
+  color: var(--landing-sky-blue);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.18);
+}
+.beta-cta-white:hover {
+  box-shadow: 0 10px 26px rgba(56, 189, 248, 0.28);
+  transform: translateY(-2px);
+}
+.beta-cta-white:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.35);
+}
+.beta-cta-white .cta-star {
+  margin-right: 0.5rem;
+  display: inline-block;
+  color: var(--landing-sky-blue);
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.35));
+}
+@keyframes cta-roll {
+  0%   { transform: rotate(0deg) scale(1); }
+  60%  { transform: rotate(360deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+.cta-rolling .cta-star {
+  animation: cta-roll 0.6s ease-in-out;
+}
+.cta-rolling { transform: translateY(-1px); }
+
+/* Landing socials bar - themed and professional */
+.landing-socials {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 40;
+}
+.landing-socials-inner {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0.4rem;
+  border-radius: 9999px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+.landing-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.landing-social-link:hover { opacity: 0.9; }
+.landing-social-link:focus { outline: none; }
+.landing-social-link .icon {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+.landing-social-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(148, 163, 184, 0.2);
+}
+.landing-socials-copy {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.85rem;
+  margin-left: 0.25rem;
+}
+@media (max-width: 480px) {
+  .landing-socials-inner { gap: 0.35rem; }
+  .landing-socials-copy { display: none; }
 }

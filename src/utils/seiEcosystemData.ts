@@ -243,3 +243,39 @@ export const getSeiNetworkStats = async () => {
 export const getDAppCategories = (): string[] => {
   return ['All', 'DeFi', 'Gaming', 'Infrastructure', 'NFT'];
 };
+
+// Live protocols via DeFiLlama (fallback to local list)
+export async function getLiveSeiProtocols(): Promise<SeiDApp[]> {
+  const fallback = await getSeiDApps();
+  try {
+    const res = await fetch('https://api.llama.fi/protocols');
+    if (!res.ok) throw new Error('Failed to fetch');
+    const data = await res.json();
+    if (!Array.isArray(data)) throw new Error('Invalid response');
+    const filtered = data.filter((p: any) => Array.isArray(p.chains) && p.chains.includes('Sei'));
+    const toMillions = (num: number) => {
+      if (typeof num !== 'number' || !isFinite(num)) return 'N/A';
+      if (num >= 1_000_000_000) return `$${(num / 1_000_000_000).toFixed(1)}B`;
+      if (num >= 1_000_000) return `$${(num / 1_000_000).toFixed(1)}M`;
+      if (num >= 1_000) return `$${(num / 1_000).toFixed(1)}K`;
+      return `$${num}`;
+    };
+    const mapped: SeiDApp[] = filtered.map((p: any, idx: number) => ({
+      id: 10_000 + idx,
+      name: p.name || 'Unknown Protocol',
+      description: p.category ? `${p.category} protocol on Sei` : 'Protocol on Sei',
+      image: p.logo || '/Seifu.png',
+      category: p.category || 'DeFi',
+      tvl: typeof p.tvl === 'number' ? toMillions(p.tvl) : (p.tvl || 'N/A'),
+      users: 'N/A',
+      url: p.url || '#',
+      featured: false,
+      status: 'Live',
+    }));
+    // Prefer mapped if non-empty; otherwise fallback
+    return mapped.length ? mapped : fallback;
+  } catch (err) {
+    console.warn('getLiveSeiProtocols fallback:', err);
+    return fallback;
+  }
+}
