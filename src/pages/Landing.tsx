@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Rocket, ArrowRight } from 'lucide-react';
-import { getSeiDApps } from '../utils/seiEcosystemData';
+import { getLiveSeiProtocols } from '../utils/seiEcosystemData';
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ const Landing = () => {
       if (acceptChoice === 'agree' && scrolledToEnd) {
         setStep('tasks');
         // Load protocols when moving to tasks step
-        getSeiDApps()
+        getLiveSeiProtocols()
           .then((apps) => {
             const allowed = new Set(['DeFi', 'Trading', 'Staking', 'Lending']);
             const options = apps
