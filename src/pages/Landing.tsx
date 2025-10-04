@@ -138,7 +138,7 @@ const Landing = () => {
             src={'/assets/landing-bg.jpg'}
             alt=""
             aria-hidden="true"
-            className="w-full h-full object-cover"
+            className="landing-bg-img"
             onError={(e) => {
               const img = e.currentTarget as HTMLImageElement;
               const githubRaw = 'https://raw.githubusercontent.com/milesairdrop3-dotcom/seifun/main/public/assets/landing-bg.jpg';
@@ -147,8 +147,6 @@ const Landing = () => {
               }
             }}
           />
-          {/* No color overlay to avoid blue tint */}
-          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-slate-950/70 via-slate-900/30 to-transparent" />
           {/* Cloud frame and ocean snow overlays */}
           <div className="cloud-frame" />
           <div className="ocean-snow" aria-hidden="true">
