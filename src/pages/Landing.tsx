@@ -172,6 +172,25 @@ const Landing = () => {
 
         <div className="landing-container">
           <div className="py-16 w-full text-center landing-fade-in">
+            {/* Snow-like text droplets */}
+            <div className="seifun-snow" aria-hidden="true">
+              {Array.from({ length: 14 }).map((_, i) => (
+                <span
+                  key={i}
+                  className="seifun-flake"
+                  style={{
+                    left: `${(i * 71) % 100}%`,
+                    ['--x' as any]: `${(i % 2 === 0 ? -1 : 1) * (4 + (i % 8))}px`,
+                    ['--xamp' as any]: `${(i % 5) * 6 + 8}px`,
+                    ['--fall' as any]: `${10 + (i % 7)}s`,
+                    ['--wobble' as any]: `${4 + (i % 5)}s`,
+                    fontSize: `${12 + (i % 6) * 2}px`,
+                  }}
+                >
+                  {i % 2 === 0 ? 'sei' : 'fun'}
+                </span>
+              ))}
+            </div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border landing-border landing-text-muted mb-6">
               <span className="brand-blue-dot" /> Built for the Sei Network
             </div>
