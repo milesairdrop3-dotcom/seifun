@@ -19,6 +19,7 @@
     "compile": "npx hardhat compile"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
     "@cosmjs/stargate": "^0.34.0",
     "@langchain/core": "^0.3.68",
     "@langchain/openai": "^0.6.7",

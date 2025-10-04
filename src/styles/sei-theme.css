@@ -187,6 +187,13 @@
   backdrop-filter: blur(10px);
 }
 
+/* Light variant for white-card forms */
+.landing-input.light {
+  background: rgba(255,255,255,0.9);
+  color: #0f172a;
+  border: 1px solid rgba(2,6,23,0.1);
+}
+
 .landing-input:focus {
   outline: none;
   border-color: var(--landing-sei-blue);

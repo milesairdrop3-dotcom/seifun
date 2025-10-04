@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Rocket, ArrowRight } from 'lucide-react';
 import { getLiveSeiProtocols } from '../utils/seiEcosystemData';
+import { saveBetaApplication } from '../utils/supabase';
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -83,14 +84,17 @@ const Landing = () => {
         return;
       }
       try {
-        // For now, just log. This is where you'd POST to your backend.
-        console.info('Beta Application Submitted', {
-          xUsername,
-          email,
-          topProtocol,
-          followed: { seifu_trade: followSeifu, iseoluwa_miles: followMiles },
+        await saveBetaApplication({
+          x_username: xUsername.trim(),
+          email: email.trim(),
+          top_protocol: topProtocol,
+          followed_seifu: followSeifu,
+          followed_miles: followMiles,
         });
         setStep('done');
+      } catch (err: any) {
+        console.error('saveBetaApplication error', err);
+        setSubmitError(err?.message || 'Failed to submit. Please try again.');
       } finally {
         setSubmitting(false);
       }
@@ -355,17 +359,17 @@ const Landing = () => {
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-1">X username</label>
-                      <input className="landing-input bg-white text-slate-900" placeholder="e.g. seifun_user" value={xUsername} onChange={(e) => setXUsername(e.target.value)} />
+                      <input className="landing-input light" placeholder="e.g. seifun_user" value={xUsername} onChange={(e) => setXUsername(e.target.value)} />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                      <input type="email" className="landing-input bg-white text-slate-900" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+                      <input type="email" className="landing-input light" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-1">Top DeFi protocol on Sei</label>
-                    <select className="landing-input bg-white text-slate-900" value={topProtocol} onChange={(e) => setTopProtocol(e.target.value)}>
+                    <select className="landing-input light" value={topProtocol} onChange={(e) => setTopProtocol(e.target.value)}>
                       {protocolOptions.map((p) => (
                         <option key={p.id} value={p.name}>{p.name}</option>
                       ))}
