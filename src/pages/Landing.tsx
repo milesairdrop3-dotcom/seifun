@@ -409,27 +409,22 @@ const Landing = () => {
       {/* Landing socials - themed */}
       <div className="landing-socials">
         <div className="landing-socials-inner">
-          <a href="https://x.com/seifu_trade" target="_blank" rel="noreferrer" className="landing-social-link" aria-label="X">
+          <a href="https://x.com/seifu_trade" target="_blank" rel="noreferrer" className="landing-social-link" aria-label="X (@seifu_trade)">
             <span className="icon" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18.9 3H22l-7.5 9.1L22.6 21h-5.7l-5-5.8L6.2 21H3.1l7-8.5L2.3 3h5.9l4.5 5.3L18.9 3Z" />
               </svg>
             </span>
           </a>
-          <a href="https://discord.gg/seifun" target="_blank" rel="noreferrer" className="landing-social-link" aria-label="Discord">
+          <a href="#" onClick={(e)=>e.preventDefault()} className="landing-social-link" aria-label="Discord (coming soon)">
             <span className="icon" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false">
                 <path d="M20.317 4.369A17.345 17.345 0 0 0 16.558 3a12.248 12.248 0 0 0-.6 1.243 16.145 16.145 0 0 0-4.316 0A12.3 12.3 0 0 0 11.042 3a17.29 17.29 0 0 0-3.76 1.369C5.31 7.194 4.797 9.936 5.03 12.622c1.873 1.36 3.685 2.191 5.452 2.63.418-.58.792-1.195 1.116-1.84-.621-.236-1.215-.522-1.776-.852.148-.108.294-.22.435-.338 3.423 1.6 7.125 1.6 10.52 0 .141.118.287.23.435.338-.56.33-1.155.616-1.777.852.324.645.698 1.26 1.117 1.84 1.765-.44 3.577-1.27 5.449-2.63.375-4.178-.645-6.93-2.084-8.253ZM9.68 10.965c-1.009 0-1.826.93-1.826 2.078 0 1.149.817 2.079 1.826 2.079 1.009 0 1.827-.93 1.827-2.079 0-1.148-.818-2.078-1.827-2.078Zm6.64 0c-1.009 0-1.826.93-1.826 2.078 0 1.149.817 2.079 1.826 2.079s1.827-.93 1.827-2.079c0-1.148-.818-2.078-1.827-2.078Z"/>
               </svg>
             </span>
+            <span className="sr-only">Coming soon</span>
           </a>
-          <a href="https://github.com/Seifun1/Seifun" target="_blank" rel="noreferrer" className="landing-social-link" aria-label="GitHub">
-            <span className="icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" clipRule="evenodd" d="M12 .5C5.648.5.5 5.648.5 12A11.5 11.5 0 0 0 8.35 23.1c.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.36.73-4.07-1.62-4.07-1.62-.55-1.4-1.35-1.77-1.35-1.77-1.1-.76.08-.74.08-.74 1.22.09 1.86 1.26 1.86 1.26 1.08 1.85 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.68-.3-5.5-1.34-5.5-5.97 0-1.32.47-2.39 1.24-3.24-.12-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.24a11.3 11.3 0 0 1 6 0c2.28-1.56 3.29-1.24 3.29-1.24.66 1.64.24 2.86.12 3.16.77.85 1.24 1.92 1.24 3.24 0 4.64-2.82 5.66-5.51 5.96.43.37.82 1.11.82 2.24 0 1.62-.01 2.92-.01 3.31 0 .32.22.69.83.57A11.5 11.5 0 0 0 23.5 12C23.5 5.648 18.352.5 12 .5Z"/>
-              </svg>
-            </span>
-          </a>
+          {/* GitHub hidden for now */}
           <span className="landing-social-divider" />
           <span className="landing-socials-copy">© 2025 All rights reserved</span>
         </div>
