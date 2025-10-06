@@ -39,7 +39,7 @@ const Landing = () => {
     }
   };
 
-  const handleProceed = () => {
+  const handleProceed = async () => {
     if (step === 'terms') {
       if (acceptChoice === 'agree' && scrolledToEnd) {
         setStep('tasks');
