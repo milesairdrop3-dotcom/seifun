@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AppHeaderSafe from './components/AppHeaderSafe';
-import AppFooter from './components/AppFooter';
-import MobileBottomBar from './components/MobileBottomBar';
+// Temporarily hide global footer and mobile bottom bar
+// import AppFooter from './components/AppFooter';
+// import MobileBottomBar from './components/MobileBottomBar';
 import SocialExcel from './pages/SocialExcel';
 import Portfolio from './pages/Portfolio';
 import SeifunLaunch from './pages/SeifunLaunch';
@@ -25,72 +26,72 @@ function App() {
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
               <Seilor />
-              <div className="h-20 md:hidden" />
+              {/* <div className="h-20 md:hidden" />
               <MobileBottomBar />
-              <AppFooter />
+              <AppFooter /> */}
             </div>
           } />
           <Route path="/app/launch" element={
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
               <SeifunLaunch />
-              <div className="h-20 md:hidden" />
+              {/* <div className="h-20 md:hidden" />
               <MobileBottomBar />
-              <AppFooter />
+              <AppFooter /> */}
             </div>
           } />
           <Route path="/app/seilist" element={
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
               <SeiList />
-              <div className="h-20 md:hidden" />
+              {/* <div className="h-20 md:hidden" />
               <MobileBottomBar />
-              <AppFooter />
+              <AppFooter /> */}
             </div>
           } />
           <Route path="/app/safechecker" element={
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
               <SafeChecker />
-              <div className="h-20 md:hidden" />
+              {/* <div className="h-20 md:hidden" />
               <MobileBottomBar />
-              <AppFooter />
+              <AppFooter /> */}
             </div>
           } />
           <Route path="/app/seilor" element={
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
               <Seilor />
-              <div className="h-20 md:hidden" />
+              {/* <div className="h-20 md:hidden" />
               <MobileBottomBar />
-              <AppFooter />
+              <AppFooter /> */}
             </div>
           } />
           <Route path="/app/excel" element={
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
               <SocialExcel />
-              <div className="h-20 md:hidden" />
+              {/* <div className="h-20 md:hidden" />
               <MobileBottomBar />
-              <AppFooter />
+              <AppFooter /> */}
             </div>
           } />
           <Route path="/app/devplus" element={
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
               <DevPlus />
-              <div className="h-20 md:hidden" />
+              {/* <div className="h-20 md:hidden" />
               <MobileBottomBar />
-              <AppFooter />
+              <AppFooter /> */}
             </div>
           } />
           <Route path="/app/docs" element={
             <div className="min-h-screen app-bg-primary">
               <AppHeaderSafe />
               <Docs />
-              <div className="h-20 md:hidden" />
+              {/* <div className="h-20 md:hidden" />
               <MobileBottomBar />
-              <AppFooter />
+              <AppFooter /> */}
             </div>
           } />
           <Route path="/app/charts" element={
