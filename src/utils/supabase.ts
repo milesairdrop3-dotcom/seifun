@@ -8,12 +8,13 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
  */
 let client: SupabaseClient | null = null;
 
-export function getSupabaseClient(): SupabaseClient {
+export function getSupabaseClient(): SupabaseClient | null {
   if (client) return client;
   const url = import.meta.env.VITE_SUPABASE_URL as string | undefined;
   const key = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
-  if (!url || !key) {
-    throw new Error('Supabase env missing: set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY');
+  if (!url || !key || url === 'https://your-project-id.supabase.co' || key === 'your-anon-key-here') {
+    console.warn('Supabase not configured: set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY');
+    return null;
   }
   client = createClient(url, key, {
     auth: { persistSession: false },
@@ -33,6 +34,11 @@ export interface BetaApplication {
 
 export async function saveBetaApplication(app: BetaApplication) {
   const supabase = getSupabaseClient();
+  if (!supabase) {
+    // Fallback: log to console and return mock data
+    console.log('Beta application (Supabase not configured):', app);
+    return { ...app, id: 'mock-' + Date.now(), created_at: new Date().toISOString() };
+  }
   const { data, error } = await supabase.from('beta_applications').insert(app).select('*').single();
   if (error) throw error;
   return data as BetaApplication;
