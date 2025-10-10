@@ -700,11 +700,77 @@
   transform: scale(1.06);
   will-change: transform;
   transition: transform 8s ease-out;
+  /* Enhanced image quality */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: optimize-quality;
+  /* Smooth loading */
+  opacity: 0;
+  animation: fadeInImage 1.5s ease-out 0.5s forwards;
+  /* Performance optimizations */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  /* Better image scaling */
+  image-rendering: auto;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
+  /* Prevent layout shift */
+  min-height: 100vh;
+  min-width: 100vw;
 }
+
+@keyframes fadeInImage {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
 @media (max-width: 768px) {
   .landing-bg-img {
     transform: scale(1.2);
     object-position: 50% 30%;
+    animation: fadeInImageMobile 1.5s ease-out 0.5s forwards;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .landing-bg-img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Large screens optimization */
+@media (min-width: 1920px) {
+  .landing-bg-img {
+    transform: scale(1.02);
+    object-position: center 40%;
+  }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 2560px) {
+  .landing-bg-img {
+    transform: scale(1.01);
+    object-position: center 35%;
+  }
+}
+
+@keyframes fadeInImageMobile {
+  from {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.2);
   }
 }
 

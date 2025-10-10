@@ -53,7 +53,17 @@ const Landing = () => {
             setProtocolOptions(options);
             if (options.length && !topProtocol) setTopProtocol(options[0].name);
           })
-          .catch(() => {});
+          .catch((error) => {
+            console.warn('Failed to load protocols:', error);
+            // Set fallback options
+            setProtocolOptions([
+              { id: 1, name: 'Astroport' },
+              { id: 2, name: 'Dragonswap' },
+              { id: 3, name: 'Nitro' },
+              { id: 4, name: 'Kryptonite' }
+            ]);
+            if (!topProtocol) setTopProtocol('Astroport');
+          });
       } else if (acceptChoice === 'disagree' || acceptChoice === 'nevermind') {
         setShowTerms(false);
       }
@@ -138,16 +148,40 @@ const Landing = () => {
       <section className="relative overflow-hidden min-h-screen flex items-center">
         {/* Background image with responsive formats and graceful fallback */}
         <div className="absolute inset-0 -z-10">
+          {/* Loading placeholder */}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 animate-pulse" />
+          
           <img
             src={'/assets/landing-bg.jpg'}
             alt=""
             aria-hidden="true"
             className="landing-bg-img"
+            loading="eager"
+            decoding="async"
+            onLoad={(e) => {
+              const img = e.currentTarget as HTMLImageElement;
+              img.style.opacity = '1';
+              // Hide loading placeholder
+              const placeholder = img.parentElement?.querySelector('.animate-pulse');
+              if (placeholder) {
+                (placeholder as HTMLElement).style.opacity = '0';
+                setTimeout(() => {
+                  (placeholder as HTMLElement).style.display = 'none';
+                }, 500);
+              }
+            }}
             onError={(e) => {
               const img = e.currentTarget as HTMLImageElement;
               const githubRaw = 'https://raw.githubusercontent.com/milesairdrop3-dotcom/seifun/main/public/assets/landing-bg.jpg';
               if (img.src !== githubRaw) {
                 img.src = githubRaw;
+              } else {
+                // Final fallback - show gradient background
+                img.style.display = 'none';
+                const parent = img.parentElement;
+                if (parent) {
+                  parent.style.background = 'linear-gradient(135deg, #0b1e3a 0%, #1e3a8a 50%, #3b82f6 100%)';
+                }
               }
             }}
           />
